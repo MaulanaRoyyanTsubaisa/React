@@ -1,9 +1,12 @@
-import SignUpPage from "./pages/SignUpPage";
-import ProfilPage from "./pages/ProfilPages";
-import WhislistPage from "./pages/WishlistPage";
+import { Route, Routes } from "react-router-dom";
 import { Toaster } from "sonner";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import CounterPage from "./pages/CounterPage";
+import ProfilPage from "./pages/ProfilPages";
+import SignUpPage from "./pages/SignUpPage";
+import WhislistPage from "./pages/WishlistPage";
+import { lazy, Suspense } from "react";
+// import CounterPage from "./pages/CounterPage";
+
+const CounterPage = lazy(() => import("./pages/CounterPage"));
 
 function App() {
   return (
@@ -12,8 +15,15 @@ function App() {
       <Routes>
         <Route path="/whislist" element={<WhislistPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
-        <Route path="/" element={<CounterPage />} />
-        <Route path="/profile/:username" element={<ProfilPage/>} />
+        <Route
+          path="/"
+          element={
+            <Suspense fallback={<p>Loading...</p>}>
+              <CounterPage /> 
+            </Suspense>
+          }
+        />
+        <Route path="/profile/:username" element={<ProfilPage />} />
       </Routes>
     </>
   );

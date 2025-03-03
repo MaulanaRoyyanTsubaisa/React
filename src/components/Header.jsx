@@ -1,8 +1,15 @@
+
+
 import Heading from "./Heading";
 const Header = () => {
   return (
-    <header>
-      <Heading>ini adalah header</Heading>
+    <header
+    style ={{
+      backgroundColor: "darkgray",
+      padding: "20px",
+      textAlign: "center",
+    }}>
+      <Heading />
     </header>
   );
 };

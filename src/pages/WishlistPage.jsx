@@ -65,6 +65,9 @@ const WhislistPage = () => {
         ))}
       </ul>
       <Link to="/sign-up">SignUp now</Link>
+      <br />
+      <Link to="/">Back To Home</Link>
+      <br />
     </>
   );
 };
